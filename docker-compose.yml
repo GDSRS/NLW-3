@@ -1,0 +1,29 @@
+version: "3.1"
+services:
+  web:
+    image: node:12.18.3-buster-slim
+    user: "${CURRENT_UID}"
+    working_dir: "/usr/src/app"
+    network_mode: "host"
+    volumes:
+      - .:/usr/src/app
+    command: bash -c 'cd web && bash'
+
+  server:
+    build:
+      context: ./server
+    user: "${CURRENT_UID}"
+    working_dir: "/usr/src/app"
+    network_mode: "host"
+    volumes:
+      - .:/usr/src/app
+    command: bash -c 'cd server && bash'
+
+  mobile:
+    image: patwoz/expo-cli:3
+    user: "${CURRENT_UID}"
+    working_dir: "/usr/src/app"
+    network_mode: "host"
+    volumes:
+      - .:/usr/src/app
+    command: bash -c 'cd mobile && bash'
