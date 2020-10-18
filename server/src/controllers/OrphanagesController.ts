@@ -15,6 +15,8 @@ export default {
     })
     orphanageInfo['images'] = images
 
+    orphanageInfo['open_on_weekends'] = Boolean(orphanageInfo['open_on_weekends'])
+
 
     const schema = Yup.object().shape({
       name: Yup.string().required(),
