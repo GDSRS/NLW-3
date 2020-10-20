@@ -25,4 +25,4 @@ yarn-error.log*
 
 /uploads
 
-*.sqlite
+/src/database/database.sqlite
